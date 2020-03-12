@@ -1,0 +1,15 @@
+<% unless @tv_shows.blank? %>
+	<% @tv_shows.each do |tv_show|%>
+		<tr>
+			<td><%= tv_show.channel.name rescue nil %></td>
+			<td><%= tv_show.name rescue nil%></td>
+			<td><%= tv_show.timing.strftime(" %H:%M ") rescue nil %></td>
+			<td>
+				<label class="switch" id="<%= tv_show.id %>" onchange="updateFavourite(this)">
+				  <input type="checkbox" <%= "checked" if get_checked_favourite(tv_show) %>>
+				  <span class="slider round"></span>
+				</label>
+			</td>
+		</tr>
+	<% end %>
+<% end %>
